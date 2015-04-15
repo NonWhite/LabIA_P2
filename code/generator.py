@@ -6,11 +6,7 @@ class CallGenerator :
 	def __init__( self , floors = 20 ) :
 		self.num_floors = floors
 
-	def mod( self , a ) : return ( a % self.maxcode + self.maxcode ) % self.maxcode
-	def add( self , a , b ) : return self.mod( self.mod( a ) + self.mod( b ) )
-	def mult( self , a , b ) : return self.mod( self.mod( a ) * self.mod( b ) )
-
-	def generateElevatorCall( self ) :
+	def generateSingleElevatorCall( self ) :
 		ElevatorCall = namedtuple( 'ElevatorCall' , 'current_floor destiny_floor' )
 		current_floor = randint( 1 , self.num_floors )
 		destiny_floor = randint( 1 , self.num_floors )
@@ -19,6 +15,11 @@ class CallGenerator :
 		print "Current = %s , Destiny = %d" % ( current_floor , destiny_floor )
 		return ElevatorCall( current_floor , destiny_floor )
 	
+	def generateElevatorCalls( self , max_calls ) :
+		num_calls = randint( 1 , max_calls )
+		lst_calls = []
+		for i in range( num_calls ) : lst_calls.append( self.generateSingleElevatorCall() )
+		return lst_calls
 
 if __name__ == "__main__" :
 	generator = CallGenerator()
