@@ -10,7 +10,7 @@ class Simulation :
 		'alpha' : 0.3
 	}
 
-	def __init__( self , num_elevators = 1 , num_floors = 5 , total_time = 5 ) :
+	def __init__( self , num_elevators = 3 , num_floors = 5 , total_time = 5 ) :
 		elevators_capacity = Simulation.config[ 'elevator_capacity' ]
 		self.building = Building( num_elevators = num_elevators , num_floors = num_floors , elevators_capacity = elevators_capacity )
 		self.generator = CallGenerator( num_floors )
@@ -25,10 +25,13 @@ class Simulation :
 			for j in range( num_iterations ) :
 				options = []
 				for k in range( current_state.num_elevators ) :
-					if current_state.elevators[ k ].current_capacity < 1 : continue
+					elevator = current_state.elevators[ k ]
+					if elevator.current_capacity == 0 : continue
+					if elevator.direction != call.direction and elevator.direction != 0 : continue
 					current_sol = current_state.clone()
 					current_sol.planElevatorMovement( elevator_pos = k , call = call )
 					options.append( current_sol )
+				if len( options ) == 0 : continue
 				options.sort( key = lambda x : x.heuristic_value )
 				new_len = int( round( len( options ) * Simulation.config[ 'alpha' ] + 0.5 ) )
 				options = options[ 0 : new_len ]
@@ -37,9 +40,12 @@ class Simulation :
 				if best_sol == None or selection.hasBetterDistance( best_sol ) :
 					best_sol = selection
 			current_state = best_sol
+			if current_state == None : return None
+		for ins in current_state.instructions : print ins
 		return current_state
 
 	def simulate( self , filepath = None ) :
+		for i in range( 40 ) : print
 		current_state = self.building
 		calls = ( self.generator.extractCallsFromFile( filepath ) if filepath != None else None )
 		for i in range( self.total_time ) :
@@ -48,6 +54,9 @@ class Simulation :
 			print "#CALLS = %s" % len( lst_calls )
 			print lst_calls
 			current_state = self.minimizeEnergyCost( current_state , lst_calls )
+			if current_state == None :
+				print "No solution"
+				break
 			current_state.move()
 			print current_state
 

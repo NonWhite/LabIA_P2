@@ -11,10 +11,12 @@ class Building :
 		for i in range( num_floors ) : self.floors.append( Floor( ID = i+1 ) )
 		self.num_floors = num_floors
 		self.heuristic_value = 0
+		self.instructions = []
 	
 	def planElevatorMovement( self , elevator_pos , call ) :
 		cost = self.elevators[ elevator_pos ].addCall( call )
 		self.heuristic_value += cost
+		self.instructions.append( "Recogera la llamada ( CF = %s , DF = %s ) con el elevador %s" % ( call.current_floor , call.destiny_floor , elevator_pos ) )
 	
 	def hasBetterDistance( self , other ) :
 		return self.heuristic_value < other.heuristic_value
@@ -24,12 +26,13 @@ class Building :
 			elevator.move()
 
 	def clone( self ) :
-		return copy.copy( self )
+		return copy.deepcopy( self )
 
 	def __str__( self ) :
 		s  = "Num elevators = %s\n" % self.num_elevators
 		s += "Num floors = %s\n" % self.num_floors
 		s += "Heuristic value = %s\n" % self.heuristic_value
+		for e in self.elevators : s += str( e )
 		return s
 	
 
