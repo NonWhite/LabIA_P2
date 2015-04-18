@@ -26,7 +26,9 @@ class Building :
 			elevator.move()
 
 	def clone( self ) :
-		return copy.deepcopy( self )
+		other = copy.deepcopy( self )
+		other.elevators = list( self.elevators )
+		return other
 
 	def __str__( self ) :
 		s  = "Num elevators = %s\n" % self.num_elevators

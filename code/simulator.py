@@ -48,6 +48,7 @@ class Simulation :
 		for i in range( 40 ) : print
 		current_state = self.building
 		calls = ( self.generator.extractCallsFromFile( filepath ) if filepath != None else None )
+		#if filepath != None : self.total_time = len( calls )
 		for i in range( self.total_time ) :
 			print "TIME = %s" % i
 			lst_calls = ( calls[ i ] if filepath != None else self.generator.generateElevatorCalls( Simulation.config[ 'max_num_calls' ] ) )
