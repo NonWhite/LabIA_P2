@@ -19,6 +19,7 @@ class Building :
 		self.instructions.append( "Recogera la llamada ( CF = %s , DF = %s ) con el elevador %s" % ( call.current_floor , call.destiny_floor , elevator_pos ) )
 	
 	def hasBetterDistance( self , other ) :
+		if other == None : return True
 		return self.heuristic_value < other.heuristic_value
 	
 	def move( self ) :
@@ -26,9 +27,10 @@ class Building :
 			elevator.move()
 
 	def clone( self ) :
-		other = copy.deepcopy( self )
-		other.elevators = list( self.elevators )
-		return other
+		return copy.deepcopy( self )
+		#other = copy.deepcopy( self )
+		#other.elevators = list( self.elevators )
+		#return other
 
 	def __str__( self ) :
 		s  = "Num elevators = %s\n" % self.num_elevators
