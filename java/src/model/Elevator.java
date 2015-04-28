@@ -11,15 +11,13 @@ public class Elevator {
 	private Integer direction ;
 	private Integer numStops ;
 	private List<ElevatorCall> stops ;
-//	private List<Integer> stops ;
-//	private List<Integer> incoming ;
-//	private List<Integer> outcoming ;
 	private Integer cost ;
-	private Boolean willBeFull ;
+	private Integer distanceMoved ;
 	
 	private static Integer INF = Integer.MAX_VALUE ;
 	
 	public Integer getCost(){
+		updateCost() ;
 		return cost ;
 	}
 	
@@ -50,14 +48,6 @@ public class Elevator {
 	public List<ElevatorCall> getStops(){
 		return stops ;
 	}
-//
-//	public List<Integer> getIncoming(){
-//		return incoming ;
-//	}
-//
-//	public List<Integer> getOutcoming(){
-//		return outcoming ;
-//	}
 	
 	public Elevator(){
 		this.totalCapacity = 5 ;
@@ -65,13 +55,10 @@ public class Elevator {
 		this.currentFloor = 1 ;
 		this.direction = 0 ;
 		this.ID = 1 ;
-//		this.incoming = new ArrayList<Integer>() ;
 		this.numStops = 0 ;
-//		this.outcoming = new ArrayList<Integer>() ;
-//		this.stops = new ArrayList<Integer>() ;
 		this.stops = new ArrayList<ElevatorCall>() ;
 		this.cost = INF ;
-		this.willBeFull = false ;
+		this.distanceMoved = 0 ;
 	}
 	
 	public Elevator( Integer id , Integer totalCapacity ){
@@ -80,13 +67,10 @@ public class Elevator {
 		this.currentFloor = 1 ;
 		this.direction = 0 ;
 		this.ID = id ;
-//		this.incoming = new ArrayList<Integer>() ;
 		this.numStops = 0 ;
-//		this.outcoming = new ArrayList<Integer>() ;
-//		this.stops = new ArrayList<Integer>() ;
 		this.stops = new ArrayList<ElevatorCall>() ;
 		this.cost = INF ;
-		this.willBeFull = false ;
+		this.distanceMoved = 0 ;
 	}
 	
 	public Elevator( Elevator other ){
@@ -94,19 +78,17 @@ public class Elevator {
 		this.currentFloor = other.currentFloor ;
 		this.direction = other.direction ;
 		this.ID = other.ID ;
-//		this.incoming = new ArrayList<Integer>( other.incoming ) ;
 		this.numStops = other.numStops ;
-//		this.outcoming = new ArrayList<Integer>( other.outcoming ) ;
-//		this.stops = new ArrayList<Integer>( other.stops ) ;
 		this.stops = new ArrayList<ElevatorCall>( other.stops ) ;
 		this.totalCapacity = other.totalCapacity ;
 		this.cost = other.cost ;
-		this.willBeFull = other.willBeFull ;
+		this.distanceMoved = other.distanceMoved ;
 	}
 	
 	public void move(){
 		// Movement
 		this.currentFloor += this.direction ;
+		this.distanceMoved += Math.abs( this.direction ) ;
 		// If there is not stops
 		if( this.numStops == 0 ) return ;
 		// If next stop is current floor
@@ -124,6 +106,7 @@ public class Elevator {
 		}
 		if( this.numStops == 0 ) this.direction = 0 ;
 		else this.direction = ( this.currentFloor > this.stops.get( 0 ).getIncomingFloor() ? -1 : ( this.currentFloor < this.stops.get( 0 ).getIncomingFloor() ? 1 : 0 ) ) ;
+		if( this.currentCapacity < 0 ) debug( "Capacity Overflow for elevator " + ID ) ;
 	}
 	
 	private void removeCall( ElevatorCall call ){
@@ -133,7 +116,7 @@ public class Elevator {
 	
 	public void addCall( ElevatorCall call ){
 		if( call.getDirection() == 0 ){ // Calls for going out of elevator
-			debug( "-------------------------------------------------------------------- LLEGO AL PISO DESTINO " + call.getIncomingFloor() ) ;
+			debug( "RECOGIO PERSONA EN PISO " + this.currentFloor ) ;
 		}
 		if( this.direction == 0 ){
 			this.stops.add( call ) ;
@@ -167,9 +150,13 @@ public class Elevator {
 		updateCost() ;
 	}
 	
-	private void updateCost(){ // TODO: Agregar coste acumulado porque por ahora cuando elimina una parada ya se le quita ese costo, pero deberia ser el total
+	private void updateCost(){
+		if( this.currentCapacity < 0 ){
+			this.cost = INF ;
+			return ;
+		}
 		Integer previous = this.currentFloor ;
-		this.cost = 0 ;
+		this.cost = this.distanceMoved ;
 		for( ElevatorCall floor : this.stops ){
 			this.cost += Math.abs( floor.getIncomingFloor() - previous ) ;
 			previous = floor.getIncomingFloor() ;
@@ -187,8 +174,6 @@ public class Elevator {
 		s += "Current Capacity = " + this.currentCapacity + "\n" ;
 		s += "Number of stops = " + this.numStops + "\n" ;
 		s += "Stops in floors = " + this.stops + "\n" ;
-//		s += "Incoming people = " + this.incoming + "\n" ;
-//		s += "Outcoming people = " + this.outcoming + "\n" ;
 		s += "##########################\n" ;
 		return s ;
 	}

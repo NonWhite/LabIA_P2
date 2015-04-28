@@ -47,7 +47,7 @@ public class ElevatorCall {
 	@Override
 	public String toString() {
 		String s = "" ;
-		s += "( In=" + this.incomingFloor ;
+		s += "(In=" + this.incomingFloor ;
 		s += "," ;
 		s += "Out=" + this.outcomingFloor + ")" ;
 		return s ;

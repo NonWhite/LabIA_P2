@@ -8,7 +8,6 @@ public class Building implements Comparable<Building> {
 	private Integer numElevators ;
 	private List<Elevator> elevators ;
 	private Integer numFloors ;
-//	private List<Floor> floors ;
 	private List<String> instructions ;
 	private Integer heuristicValue ;
 	
@@ -102,14 +101,14 @@ public class Building implements Comparable<Building> {
 	
 	private Integer getElevatorsCost(){
 		Integer cost = 0 ;
-		for( Elevator e : this.elevators ) cost += ( e.getCost() == Integer.MAX_VALUE ? this.numFloors * this.numElevators : e.getCost() ) ;
+		for( Elevator e : this.elevators ) cost += ( e.getCost() == Integer.MAX_VALUE ? 0 : e.getCost() ) ;
 		return cost ;
 	}
 	
 	public void planElevatorMovement( Integer elevatorPosition , ElevatorCall call ){
 		this.elevators.get( elevatorPosition ).addCall( call ) ;
 		this.heuristicValue = getElevatorsCost() ;
-		this.instructions.add( "Recogerá la llamada " + call + " con el elevator " + elevatorPosition ) ;
+		this.instructions.add( "Recogerá la llamada " + call + " con el elevador " + this.elevators.get( elevatorPosition ).getID() ) ;
 	}
 	
 	@Override
@@ -131,9 +130,6 @@ public class Building implements Comparable<Building> {
 			t += String.format( "%-20s = %15s %15s %15s\n" , "Current Capacity" , e1.getCurrentCapacity() , e2.getCurrentCapacity() , e3.getCurrentCapacity() ) ;
 			t += String.format( "%-20s = %15s %15s %15s\n" , "Number of stops" , e1.getNumStops() , e2.getNumStops() , e3.getNumStops() ) ;
 			t += String.format( "%-20s = %15s %15s %15s\n" , "Stops in floors" , e1.getStops() , e2.getStops() , e3.getStops() ) ;
-//			t = String.format( "%-20s = %15s %15s %15s\n" , "Incoming people" , e1.getIncoming() , e2.getIncoming() , e3.getIncoming() ) ;
-//			s += t ;
-//			t = String.format( "%-20s = %15s %15s %15s\n" , "Outcoming people" , e1.getOutcoming() , e2.getOutcoming() , e3.getOutcoming() ) ;
 			s += t ;
 		}
 		

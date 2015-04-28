@@ -53,4 +53,12 @@ public class CallGenerator {
 		sc.close() ;
 		return lstCalls ;
 	}
+	
+	public void generateAndSaveCalls( Integer maxNumCalls , Integer totalTime , String filePath ){
+		// TODO: Agregar que las llamadas se guarden en el archivo 'filePath'
+		List<List<ElevatorCall>> calls = new ArrayList<List<ElevatorCall>>() ;
+		for( Integer t = 0 ; t < totalTime ; t++){
+			calls.add( generateElevatorCalls( maxNumCalls ) ) ;
+		}
+	}
 }
