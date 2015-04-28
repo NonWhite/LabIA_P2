@@ -1,17 +1,18 @@
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.io.FileNotFoundException ;
+import java.util.ArrayList ;
+import java.util.Collections ;
+import java.util.List ;
 
-import model.Building;
-import model.Elevator;
-import model.ElevatorCall;
-import utils.CallGenerator;
-import utils.Utils;
+import model.Building ;
+import model.Elevator ;
+import model.ElevatorCall ;
+import utils.CallGenerator ;
+import static utils.Utils.debug ;
+import static utils.Utils.randomBetween ;
 
 public class Simulation {
 	public static Double alpha = 0.3 ;
-	public static Integer numIterations = 2 ;
+	public static Integer numIterations = 1 ;
 	public static Integer maxNumCallsPerMinute = 2 ;
 	public static Integer elevatorsCapacity = 5 ;
 	
@@ -46,18 +47,19 @@ public class Simulation {
 	
 	private void simulate( List<List<ElevatorCall>> calls ){
 		Building currentState = new Building( this.building ) ;
-//		Utils.debug( calls.size() ) ;
-//		for( List<ElevatorCall> ec : calls ) Utils.debug( ec ) ;
+//		debug( calls.size() ) ;
+//		for( List<ElevatorCall> ec : calls ) debug( ec ) ;
 		for( Integer t = 0 ; t < totalTime ; t++){
 			List<ElevatorCall> lstCalls = calls.get( t ) ;
-			Utils.debug( lstCalls ) ;
+			debug( "TIME = " + t ) ;
+			debug( lstCalls ) ;
 			currentState = minimizeEnergyCost( currentState , lstCalls ) ;
 			if( currentState == null ){
-				Utils.debug( "No solution" ) ;
+				debug( "No solution" ) ;
 				break ;
 			}
-			currentState.move() ;
-			Utils.debug( currentState ) ;
+			currentState.moveElevators() ;
+			debug( currentState ) ;
 		}
 	}
 	
@@ -72,6 +74,7 @@ public class Simulation {
 					Elevator elevator = currentState.getElevators().get( k ) ;
 					if( elevator.getCurrentCapacity() == 0 ) continue ;
 //					if( elevator.getDirection() != call.getDirection() && elevator.getDirection() != 0 ) continue ;
+//					debug( "CURRENT STATE " + currentState ) ;
 					Building currentSol = new Building( currentState ) ;
 					currentSol.planElevatorMovement( k ,  call ) ;
 					options.add( currentSol ) ;
@@ -80,13 +83,13 @@ public class Simulation {
 				Collections.sort( options ) ;
 				Integer newLength = Integer.parseInt( Math.round( options.size() * alpha + 0.5 ) + "" ) ;
 				options = options.subList( 0 ,  newLength ) ;
-				Integer selectedIndex = Utils.randomBetween( 0 ,  newLength ) ;
+				Integer selectedIndex = randomBetween( 0 ,  newLength ) ;
 				Building selection = new Building( options.get( selectedIndex ) ) ;
 				if( selection.hasBetterDistance( bestSol ) ) bestSol = selection ;
 			}
 			currentState = new Building( bestSol ) ;
 		}
-		for( String inst : currentState.getInstructions() ) Utils.debug( inst ) ;
+		for( String inst : currentState.getInstructions() ) debug( inst ) ;
 		return currentState ;
 	}
 	

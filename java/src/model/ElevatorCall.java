@@ -12,15 +12,19 @@ public class ElevatorCall {
 	public void setIncomingFloor( Integer incomingFloor ){
 		this.incomingFloor = incomingFloor ;
 	}
+	
 	public Integer getOutcomingFloor(){
 		return outcomingFloor ;
 	}
+	
 	public void setOutcomingFloor( Integer outcomingFloor ){
 		this.outcomingFloor = outcomingFloor ;
 	}
+	
 	public Integer getDirection(){
 		return direction ;
 	}
+	
 	public void setDirection( Integer direction ){
 		this.direction = direction ;
 	}
@@ -36,16 +40,16 @@ public class ElevatorCall {
 	public ElevatorCall( Integer in , Integer out , Integer time ){
 		this.incomingFloor = in ;
 		this.outcomingFloor = out ;
-		this.direction = ( in < out ? 1 : -1 ) ;
+		this.direction = ( in < out ? 1 : in > out ? -1 : 0 ) ;
 		this.callingTime = time ;
 	}
 	
 	@Override
 	public String toString() {
 		String s = "" ;
-		s += "( In = " + this.incomingFloor ;
-		s += " , " ;
-		s += "Out = " + this.outcomingFloor + ")" ;
+		s += "( In=" + this.incomingFloor ;
+		s += "," ;
+		s += "Out=" + this.outcomingFloor + ")" ;
 		return s ;
 	}
 }
