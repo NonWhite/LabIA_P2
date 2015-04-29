@@ -2,6 +2,7 @@ package utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,17 +24,17 @@ public class CallGenerator {
 		this.numFloors = numFloors ;
 	}
 	
-	public ElevatorCall generateSingleElevatorCall(){
+	public ElevatorCall generateSingleElevatorCall( Integer currentTime ){
 		Integer in = Utils.randomBetween( 1 , numFloors ) ;
 		Integer out = Utils.randomBetween( 1 ,  numFloors ) ;
 		while( out == in ) out = Utils.randomBetween( 1 ,  numFloors ) ;
-		return new ElevatorCall( in , out , 0 ) ;
+		return new ElevatorCall( in , out , currentTime ) ;
 	}
 	
-	public List<ElevatorCall> generateElevatorCalls( Integer maxCalls ){
+	public List<ElevatorCall> generateElevatorCalls( Integer maxCalls , Integer currentTime ){
 		Integer numCalls = Utils.randomBetween( 1 ,  maxCalls ) ;
 		List<ElevatorCall> lstCalls = new ArrayList<ElevatorCall>() ;
-		for( Integer i = 0 ; i < numCalls ; i++) lstCalls.add( generateSingleElevatorCall() ) ;
+		for( Integer i = 0 ; i < numCalls ; i++) lstCalls.add( generateSingleElevatorCall( currentTime ) ) ;
 		return lstCalls ;
 	}
 	
@@ -54,11 +55,16 @@ public class CallGenerator {
 		return lstCalls ;
 	}
 	
-	public void generateAndSaveCalls( Integer maxNumCalls , Integer totalTime , String filePath ){
-		// TODO: Agregar que las llamadas se guarden en el archivo 'filePath'
-		List<List<ElevatorCall>> calls = new ArrayList<List<ElevatorCall>>() ;
+	public void generateAndSaveCalls( Integer maxNumCalls , Integer totalTime , String filePath ) throws FileNotFoundException{
+		PrintWriter pw = new PrintWriter( new File( filePath ) ) ;
+		pw.println( totalTime ) ;
+		pw.println() ;
 		for( Integer t = 0 ; t < totalTime ; t++){
-			calls.add( generateElevatorCalls( maxNumCalls ) ) ;
+			List<ElevatorCall> calls = generateElevatorCalls( maxNumCalls , t ) ;
+			pw.println( calls.size() ) ;
+			for( ElevatorCall ec : calls ) pw.println( ec.getIncomingFloor() + " " + ec.getOutcomingFloor() ) ;
+			pw.println() ;
 		}
+		pw.close() ;
 	}
 }

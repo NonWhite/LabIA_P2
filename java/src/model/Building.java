@@ -17,48 +17,24 @@ public class Building implements Comparable<Building> {
 		return elevatorsCapacity;
 	}
 
-	public void setElevatorsCapacity(Integer elevatorsCapacity) {
-		this.elevatorsCapacity = elevatorsCapacity;
-	}
-
 	public Integer getNumElevators() {
 		return numElevators;
-	}
-
-	public void setNumElevators(Integer numElevators) {
-		this.numElevators = numElevators;
 	}
 
 	public List<Elevator> getElevators() {
 		return elevators;
 	}
 
-	public void setElevators(List<Elevator> elevators) {
-		this.elevators = elevators;
-	}
-
 	public Integer getNumFloors() {
 		return numFloors;
-	}
-
-	public void setNumFloors(Integer numFloors) {
-		this.numFloors = numFloors;
 	}
 
 	public List<String> getInstructions() {
 		return instructions;
 	}
 
-	public void setInstructions(List<String> instructions) {
-		this.instructions = instructions;
-	}
-
 	public Integer getHeuristicValue() {
 		return heuristicValue;
-	}
-
-	public void setHeuristicValue(Integer heuristicValue) {
-		this.heuristicValue = heuristicValue;
 	}
 
 	public Building(){
@@ -91,7 +67,7 @@ public class Building implements Comparable<Building> {
 		this.heuristicValue = other.heuristicValue ;
 	}
 	
-	public Boolean hasBetterDistance( Building other ){
+	public Boolean isBetterThan( Building other ){
 		return this.heuristicValue < other.heuristicValue ;
 	}
 	
@@ -105,7 +81,7 @@ public class Building implements Comparable<Building> {
 		return cost ;
 	}
 	
-	public void planElevatorMovement( Integer elevatorPosition , ElevatorCall call ){
+	public void takeNewCall( Integer elevatorPosition , ElevatorCall call ){
 		this.elevators.get( elevatorPosition ).addCall( call ) ;
 		this.heuristicValue = getElevatorsCost() ;
 		this.instructions.add( "Recogerá la llamada " + call + " con el elevador " + this.elevators.get( elevatorPosition ).getID() ) ;
