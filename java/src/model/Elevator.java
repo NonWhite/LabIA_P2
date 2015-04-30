@@ -114,12 +114,6 @@ public class Elevator {
 		if( this.currentCapacity < 0 ) debug( "Capacity Overflow for elevator " + ID ) ;
 	}
 	
-	private void removeCall( ElevatorCall call ){
-		this.stops.remove( call ) ;
-		this.waitingTime += call.getWaitingTime() ;
-		this.numStops-- ;
-	}
-	
 	public void addCall( ElevatorCall call ){
 		if( call.getDirection() == 0 ){ // Calls for going out of elevator
 //			debug( "RECOGIO PERSONA EN PISO " + this.currentFloor ) ;
@@ -156,20 +150,34 @@ public class Elevator {
 		updateCost() ;
 	}
 	
-	// TODO: Mejorar
+	private void removeCall( ElevatorCall call ){
+		this.stops.remove( call ) ;
+		this.waitingTime += call.getWaitingTime() ;
+		this.numStops-- ;
+	}
+	
 	private void updateCost(){
 		this.cost = INF ;
 		if( this.currentCapacity < 0 ) return ; // In case of capacity overflow
+		if( Simulation.COST_BY_DISTANCE && Simulation.COST_BY_WAITING_TIME ){
+			Integer previous = this.currentFloor ;
+			this.cost = this.distanceMoved + this.waitingTime ;
+			for( ElevatorCall call : this.stops ){
+				this.cost += Math.abs( call.getIncomingFloor() - previous ) ;
+				this.cost += call.getWaitingTime() ;
+				previous = call.getIncomingFloor() ;
+			}
+			return ;
+		}
 		if( Simulation.COST_BY_DISTANCE ){
 			Integer previous = this.currentFloor ;
 			this.cost = this.distanceMoved ;
-			for( ElevatorCall floor : this.stops ){
-				this.cost += Math.abs( floor.getIncomingFloor() - previous ) ;
-				previous = floor.getIncomingFloor() ;
+			for( ElevatorCall call : this.stops ){
+				this.cost += Math.abs( call.getIncomingFloor() - previous ) ;
+				previous = call.getIncomingFloor() ;
 			}
-		}
-		if( Simulation.COST_BY_WAITING_TIME ){
-			this.cost = ( this.cost == INF ? 0 : this.cost ) + this.waitingTime ;
+		}else if( Simulation.COST_BY_WAITING_TIME ){
+			this.cost = this.waitingTime ;
 			for( ElevatorCall call : this.stops ){
 				this.cost += call.getWaitingTime() ;
 			}

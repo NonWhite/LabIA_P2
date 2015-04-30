@@ -9,13 +9,15 @@ import static utils.Utils.debug ;
 import static utils.Utils.randomBetween ;
 
 public class Simulation {
+	/* ======== START GENERIC PARAMETERS ======== */
 	public static Double alpha = 0.9 ;
 	public static Integer numIterations = 20 ;
 	public static Integer maxNumCallsPerMinute = 4 ;
 	public static Integer elevatorsCapacity = 10 ; // totalTime * maxNumCallsPerMinute < elevatorsCapacity * numElevators
 	
-	public static Boolean COST_BY_DISTANCE = false ;
+	public static Boolean COST_BY_DISTANCE = true ;
 	public static Boolean COST_BY_WAITING_TIME = true ;
+	/* ======== END GENERIC PARAMETERS ======== */
 	
 	private Building building ;
 	private CallGenerator generator ;
@@ -51,14 +53,11 @@ public class Simulation {
 		Boolean hasSolution = true ;
 		for( Integer t = 0 ; t < totalTime ; t++){
 			List<ElevatorCall> lstCalls = calls.get( t ) ;
-			debug( "TIME = " + t ) ;
-//			debug( lstCalls ) ;
 			currentState = heuristicFunction( currentState , lstCalls ) ;
 			if( currentState == null ){
 				hasSolution = false ;
 				break ;
 			}
-			debug( currentState ) ;
 			currentState.moveElevators() ;
 		}
 		if( hasSolution ) debug( "SOLUCION FINAL:\n" + currentState ) ;
