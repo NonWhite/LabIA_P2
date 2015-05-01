@@ -55,16 +55,19 @@ public class CallGenerator {
 		return lstCalls ;
 	}
 	
-	public void generateAndSaveCalls( Integer maxNumCalls , Integer totalTime , String filePath ) throws FileNotFoundException{
+	public List<List<ElevatorCall>> generateAndSaveCalls( Integer maxNumCalls , Integer totalTime , String filePath ) throws FileNotFoundException{
 		PrintWriter pw = new PrintWriter( new File( filePath ) ) ;
 		pw.println( totalTime ) ;
 		pw.println() ;
+		List<List<ElevatorCall>>lstCalls = new ArrayList<List<ElevatorCall>>() ;
 		for( Integer t = 0 ; t < totalTime ; t++){
 			List<ElevatorCall> calls = generateElevatorCalls( maxNumCalls , t ) ;
 			pw.println( calls.size() ) ;
 			for( ElevatorCall ec : calls ) pw.println( ec.getIncomingFloor() + " " + ec.getOutcomingFloor() ) ;
 			pw.println() ;
+			lstCalls.add( calls ) ;
 		}
 		pw.close() ;
+		return lstCalls ;
 	}
 }

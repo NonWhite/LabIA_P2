@@ -2,6 +2,7 @@ package model;
 import java.io.FileNotFoundException ;
 import java.util.ArrayList ;
 import java.util.Collections ;
+import java.util.HashMap;
 import java.util.List ;
 
 import utils.CallGenerator ;
@@ -10,39 +11,54 @@ import static utils.Utils.randomBetween ;
 
 public class Simulation {
 	/* ======== START GENERIC PARAMETERS ======== */
-	public static Double alpha = 0.9 ;
-	public static Integer numIterations = 20 ;
-	public static Integer maxNumCallsPerMinute = 4 ;
-	public static Integer elevatorsCapacity = 10 ; // totalTime * maxNumCallsPerMinute < elevatorsCapacity * numElevators
+	 // totalTime * maxNumCallsPerMinute < elevatorsCapacity * numElevators
+	private Double alpha ; // = 0.9 ;
+	private Integer numIterations ; //= 1000 ;
+	private Integer maxNumCallsPerMinute ; //= 100 ;
+	private Integer elevatorsCapacity ; // = 10 ;
 	
-	public static Boolean COST_BY_DISTANCE = true ;
-	public static Boolean COST_BY_WAITING_TIME = true ;
+	public static Boolean COST_BY_DISTANCE ; // = true ;
+	public static Boolean COST_BY_WAITING_TIME ; // = true ;
 	/* ======== END GENERIC PARAMETERS ======== */
 	
 	private Building building ;
 	private CallGenerator generator ;
-	private String callsFile ;
+	private String inputFilename ;
+	private String outputFilename ;
 	private Integer totalTime ;
+		
+	public Simulation( HashMap<String,Object> params ){
+//		this.alpha = params.get( "alpha" ) ;
+//		this.numIterations = params.get( "numIterations" ) ;
+//		this.maxNumCallsPerMinute = params.get( "maxNumCallsPerMinute" ) ;
+//		this.elevatorsCapacity = params.get( "elevatorsCapacity" ) ;
+//		this.COST_BY_DISTANCE = params.get( "costByDistance" ) ;
+//		this.COST_BY_WAITING_TIME = params.get( "costByWaitingTime" ) ;
+//		this.inputFilename = params.get( "inputFilename" ) ;
+//		this.outputFilename = params.get( "outputFilename" ) ;
+//		this.building = new Building( params.get( "numElevators" ) , params.get( "numFloors" ) , this.elevatorsCapacity ) ;
+//		this.generator = new CallGenerator( params.get( "numFloors" ) ) ;
+	}
 	
 	public Simulation( Integer numElevators , Integer numFloors , String callsFile ){
-		this.building = new Building( numElevators , numFloors , Simulation.elevatorsCapacity ) ;
+		this.building = new Building( numElevators , numFloors , elevatorsCapacity ) ;
 		this.generator = new CallGenerator( numFloors ) ;
-		this.callsFile = callsFile ;
+		this.inputFilename = callsFile ;
 	}
 	
 	public Simulation( Integer numElevators , Integer numFloors , Integer totalTime ){
-		this.building = new Building( numElevators , numFloors , Simulation.elevatorsCapacity ) ;
+		this.building = new Building( numElevators , numFloors , elevatorsCapacity ) ;
 		this.generator = new CallGenerator( numFloors ) ;
 		this.totalTime = totalTime ;
-		this.callsFile = null ;
+		this.inputFilename = null ;
 	}
 	
 	public void simulate() throws FileNotFoundException{
 		List<List<ElevatorCall>> calls = new ArrayList<List<ElevatorCall>>() ;
-		if( callsFile == null ) for( Integer t = 0 ; t < totalTime ; t++){
+		if( inputFilename == null ) for( Integer t = 0 ; t < totalTime ; t++){
 			calls.add( generator.generateElevatorCalls( maxNumCallsPerMinute , t ) ) ;
 		}else{
-			calls = generator.extractCallsFromFile( callsFile ) ;
+			calls = generator.extractCallsFromFile( inputFilename ) ;
 			totalTime = calls.size() ;
 		}
 		simulate( calls ) ;
@@ -60,8 +76,7 @@ public class Simulation {
 			}
 			currentState.moveElevators() ;
 		}
-		if( hasSolution ) debug( "SOLUCION FINAL:\n" + currentState ) ;
-		else debug( "NO SOLUTION" ) ;
+		saveResult( hasSolution ? currentState : null ) ;
 	}
 	
 	private Building heuristicFunction( Building initialState , List<ElevatorCall> lstCalls ){
@@ -96,8 +111,15 @@ public class Simulation {
 	}
 	
 	public void reset(){
-		this.building = new Building( this.building.getNumElevators() , this.building.getNumFloors() , Simulation.elevatorsCapacity ) ;
+		this.building = new Building( this.building.getNumElevators() , this.building.getNumFloors() , elevatorsCapacity ) ;
 		this.generator = new CallGenerator( this.building.getNumFloors() ) ;
+	}
+	
+	private void saveResult( Building state ){
+		// TODO: implementar guardar el resultado en un archivo
+		debug( outputFilename ) ;
+		if( state != null ) debug( "SOLUCION FINAL:\n" + state ) ;
+		else debug( "NO SOLUTION" ) ;
 	}
 }
 
