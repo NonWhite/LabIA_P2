@@ -1,6 +1,6 @@
 .DS_store
 
-java/bin/
+code/bin/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
