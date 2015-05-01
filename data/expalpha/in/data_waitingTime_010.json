@@ -1,0 +1,1 @@
+{"alpha":0.1,"numIterations":1000,"maxNumCallsPerMinute":20,"elevatorsCapacity":20,"costByDistance":false,"costByWaitingTime":true,"numElevators":100,"numFloors":100,"inputFilename":"/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data/expalpha/calls.in","outputFilename":"/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data/expalpha/out/data_waitingTime.out"}

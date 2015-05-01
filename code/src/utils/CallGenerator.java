@@ -11,17 +11,15 @@ import model.ElevatorCall;
 
 public class CallGenerator {
 	private Integer numFloors ;
+	private Integer maxNumCalls ; 
 	
-	public Integer getNumFloors() {
-		return numFloors;
-	}
-
-	public void setNumFloors(Integer numFloors) {
-		this.numFloors = numFloors;
-	}
-
 	public CallGenerator( Integer numFloors ){
 		this.numFloors = numFloors ;
+	}
+
+	public CallGenerator( Integer numFloors , Integer maxNumCalls ){
+		this.numFloors = numFloors ;
+		this.maxNumCalls = maxNumCalls ;
 	}
 	
 	public ElevatorCall generateSingleElevatorCall( Integer currentTime ){
@@ -31,43 +29,49 @@ public class CallGenerator {
 		return new ElevatorCall( in , out , currentTime ) ;
 	}
 	
-	public List<ElevatorCall> generateElevatorCalls( Integer maxCalls , Integer currentTime ){
-		Integer numCalls = Utils.randomBetween( 1 ,  maxCalls ) ;
+	public List<ElevatorCall> generateElevatorCalls( Integer currentTime ){
+		Integer numCalls = Utils.randomBetween( 1 ,  maxNumCalls ) ;
 		List<ElevatorCall> lstCalls = new ArrayList<ElevatorCall>() ;
 		for( Integer i = 0 ; i < numCalls ; i++) lstCalls.add( generateSingleElevatorCall( currentTime ) ) ;
 		return lstCalls ;
 	}
 	
-	public List<List<ElevatorCall>> extractCallsFromFile( String filePath ) throws FileNotFoundException{
+	public List<List<ElevatorCall>> extractCallsFromFile( String filePath ){
 		List<List<ElevatorCall>>lstCalls = new ArrayList<List<ElevatorCall>>() ;
-		Scanner sc = new Scanner( new File( filePath ) ) ;
-		Integer totalTime = sc.nextInt() ;
-		for( Integer t = 0 ; t < totalTime ; t++){
-			Integer numCalls = sc.nextInt() ;
-			lstCalls.add( new ArrayList<ElevatorCall>() ) ;
-			for( Integer j = 0 ; j < numCalls ; j++){
-				Integer in = sc.nextInt() ;
-				Integer out = sc.nextInt() ;
-				lstCalls.get( t ).add( new ElevatorCall( in , out , t ) ) ;
+		try{
+			Scanner sc = new Scanner( new File( filePath ) ) ;
+			Integer totalTime = sc.nextInt() ;
+			for( Integer t = 0 ; t < totalTime ; t++){
+				Integer numCalls = sc.nextInt() ;
+				lstCalls.add( new ArrayList<ElevatorCall>() ) ;
+				for( Integer j = 0 ; j < numCalls ; j++){
+					Integer in = sc.nextInt() ;
+					Integer out = sc.nextInt() ;
+					lstCalls.get( t ).add( new ElevatorCall( in , out , t ) ) ;
+				}
 			}
+			sc.close() ;
+		}catch( FileNotFoundException e ){
 		}
-		sc.close() ;
 		return lstCalls ;
 	}
 	
-	public List<List<ElevatorCall>> generateAndSaveCalls( Integer maxNumCalls , Integer totalTime , String filePath ) throws FileNotFoundException{
-		PrintWriter pw = new PrintWriter( new File( filePath ) ) ;
-		pw.println( totalTime ) ;
-		pw.println() ;
+	public List<List<ElevatorCall>> generateAndSaveCalls( Integer totalTime , String filePath ){
 		List<List<ElevatorCall>>lstCalls = new ArrayList<List<ElevatorCall>>() ;
-		for( Integer t = 0 ; t < totalTime ; t++){
-			List<ElevatorCall> calls = generateElevatorCalls( maxNumCalls , t ) ;
-			pw.println( calls.size() ) ;
-			for( ElevatorCall ec : calls ) pw.println( ec.getIncomingFloor() + " " + ec.getOutcomingFloor() ) ;
+		try{
+			PrintWriter pw = new PrintWriter( new File( filePath ) ) ;
+			pw.println( totalTime ) ;
 			pw.println() ;
-			lstCalls.add( calls ) ;
+			for( Integer t = 0 ; t < totalTime ; t++){
+				List<ElevatorCall> calls = generateElevatorCalls( t ) ;
+				pw.println( calls.size() ) ;
+				for( ElevatorCall ec : calls ) pw.println( ec.getIncomingFloor() + " " + ec.getOutcomingFloor() ) ;
+				pw.println() ;
+				lstCalls.add( calls ) ;
+			}
+			pw.close() ;
+		}catch( FileNotFoundException e ){
 		}
-		pw.close() ;
 		return lstCalls ;
 	}
 }

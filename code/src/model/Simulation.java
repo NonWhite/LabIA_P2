@@ -27,17 +27,19 @@ public class Simulation {
 	private String outputFilename ;
 	private Integer totalTime ;
 		
-	public Simulation( HashMap<String,Object> params ){
-//		this.alpha = params.get( "alpha" ) ;
-//		this.numIterations = params.get( "numIterations" ) ;
-//		this.maxNumCallsPerMinute = params.get( "maxNumCallsPerMinute" ) ;
-//		this.elevatorsCapacity = params.get( "elevatorsCapacity" ) ;
-//		this.COST_BY_DISTANCE = params.get( "costByDistance" ) ;
-//		this.COST_BY_WAITING_TIME = params.get( "costByWaitingTime" ) ;
-//		this.inputFilename = params.get( "inputFilename" ) ;
-//		this.outputFilename = params.get( "outputFilename" ) ;
-//		this.building = new Building( params.get( "numElevators" ) , params.get( "numFloors" ) , this.elevatorsCapacity ) ;
-//		this.generator = new CallGenerator( params.get( "numFloors" ) ) ;
+	@SuppressWarnings( "static-access" )
+	public Simulation( HashMap<String,String> params ){
+		this.alpha = Double.parseDouble( params.get( "alpha" ) ) ;
+		this.numIterations = Integer.parseInt( params.get( "numIterations" ) ) ;
+		this.maxNumCallsPerMinute = Integer.parseInt( params.get( "maxNumCallsPerMinute" ) ) ;
+		this.elevatorsCapacity = Integer.parseInt( params.get( "elevatorsCapacity" ) ) ;
+		this.COST_BY_DISTANCE = Boolean.parseBoolean( params.get( "costByDistance" ) ) ;
+		this.COST_BY_WAITING_TIME = Boolean.parseBoolean( params.get( "costByWaitingTime" ) ) ;
+		this.inputFilename = params.get( "inputFilename" ) ;
+		this.outputFilename = params.get( "outputFilename" ) ;
+		this.building = new Building( Integer.parseInt( params.get( "numElevators" ) ) ,
+										Integer.parseInt( params.get( "numFloors" ) ) , this.elevatorsCapacity ) ;
+		this.generator = new CallGenerator( Integer.parseInt( params.get( "numFloors" ) ) ) ;
 	}
 	
 	public Simulation( Integer numElevators , Integer numFloors , String callsFile ){
@@ -56,7 +58,7 @@ public class Simulation {
 	public void simulate() throws FileNotFoundException{
 		List<List<ElevatorCall>> calls = new ArrayList<List<ElevatorCall>>() ;
 		if( inputFilename == null ) for( Integer t = 0 ; t < totalTime ; t++){
-			calls.add( generator.generateElevatorCalls( maxNumCallsPerMinute , t ) ) ;
+			calls.add( generator.generateElevatorCalls( t ) ) ;
 		}else{
 			calls = generator.extractCallsFromFile( inputFilename ) ;
 			totalTime = calls.size() ;

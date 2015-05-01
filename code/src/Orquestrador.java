@@ -6,12 +6,17 @@ import experiment.IExperiment;
 
 public class Orquestrador {
 	public static void main( String[] args ) throws FileNotFoundException{
-		IExperiment expAlpha = new ExperimentAlpha() ;
-		expAlpha.generateInput( "expalpha" ) ;
-		expAlpha.execute() ;
+		String path = "/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data" ;
+		// TODO: Generate the input file for the experiments
 		
-		IExperiment expIterations = new ExperimentIterations() ;
-		expIterations.generateInput( "expiterations" ) ;
-		expIterations.execute() ;
+		String dirExpAlpha = "expalpha" ;
+		IExperiment expAlpha = new ExperimentAlpha( path + "/" + dirExpAlpha ) ;
+		expAlpha.generateInput() ;
+//		expAlpha.execute() ;
+		
+		String dirExpIterations = "expiterations" ;
+		IExperiment expIterations = new ExperimentIterations( path + "/" + dirExpIterations ) ;
+		expIterations.generateInput() ;
+//		expIterations.execute() ;
 	}
 }

@@ -3,6 +3,7 @@ package model ;
 import java.util.* ;
 
 import static utils.Utils.debug ;
+import static utils.Utils.INF ;
 
 public class Elevator {
 	private Integer ID ;
@@ -16,10 +17,16 @@ public class Elevator {
 	private Integer distanceMoved ;
 	private Integer waitingTime ;
 	
-	private static Integer INF = Integer.MAX_VALUE ;
-	
+	public Integer getDistanceMoved() {
+		return distanceMoved;
+	}
+
+	public Integer getWaitingTime() {
+		return waitingTime;
+	}
+
 	public Integer getCost(){
-		updateCost() ;
+//		updateCost() ; // TODO: Revisar si esto afecta
 		return cost ;
 	}
 	
