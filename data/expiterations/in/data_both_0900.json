@@ -1,0 +1,12 @@
+{
+  "alpha" : 0.7,
+  "numIterations" : 900,
+  "maxNumCallsPerMinute" : 20,
+  "elevatorsCapacity" : 20,
+  "costByDistance" : true,
+  "costByWaitingTime" : true,
+  "numElevators" : 50,
+  "numFloors" : 50,
+  "inputFilename" : "/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data/expiterations/calls.in",
+  "outputFilename" : "/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data/expiterations/out/data_both_0900.out"
+}

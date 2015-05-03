@@ -1,1 +1,12 @@
-{"alpha":0.55,"numIterations":1000,"maxNumCallsPerMinute":20,"elevatorsCapacity":20,"costByDistance":true,"costByWaitingTime":false,"numElevators":100,"numFloors":100,"inputFilename":"/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data/expalpha/calls.in","outputFilename":"/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data/expalpha/out/data_distance.out"}
+{
+  "alpha" : 0.55,
+  "numIterations" : 1000,
+  "maxNumCallsPerMinute" : 20,
+  "elevatorsCapacity" : 20,
+  "costByDistance" : true,
+  "costByWaitingTime" : false,
+  "numElevators" : 50,
+  "numFloors" : 50,
+  "inputFilename" : "/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data/expalpha/calls.in",
+  "outputFilename" : "/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data/expalpha/out/data_distance_055.out"
+}
