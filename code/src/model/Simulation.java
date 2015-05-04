@@ -1,24 +1,28 @@
 package model;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException ;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList ;
 import java.util.Collections ;
-import java.util.HashMap;
 import java.util.List ;
 
+import experiment.Parameters;
 import utils.CallGenerator ;
 import static utils.Utils.debug ;
 import static utils.Utils.randomBetween ;
 
+@SuppressWarnings( "unused" )
 public class Simulation {
 	/* ======== START GENERIC PARAMETERS ======== */
 	 // totalTime * maxNumCallsPerMinute < elevatorsCapacity * numElevators
-	private Double alpha ; // = 0.9 ;
-	private Integer numIterations ; //= 1000 ;
-	private Integer maxNumCallsPerMinute ; //= 100 ;
-	private Integer elevatorsCapacity ; // = 10 ;
+	private Double alpha ;
+	private Integer numIterations ;
+	private Integer maxNumCallsPerMinute ;
+	private Integer elevatorsCapacity ;
 	
-	public static Boolean COST_BY_DISTANCE ; // = true ;
-	public static Boolean COST_BY_WAITING_TIME ; // = true ;
+	public static Boolean COST_BY_DISTANCE ;
+	public static Boolean COST_BY_WAITING_TIME ;
 	/* ======== END GENERIC PARAMETERS ======== */
 	
 	private Building building ;
@@ -26,20 +30,20 @@ public class Simulation {
 	private String inputFilename ;
 	private String outputFilename ;
 	private Integer totalTime ;
-		
+	private Long executionTime ;
+
 	@SuppressWarnings( "static-access" )
-	public Simulation( HashMap<String,String> params ){
-		this.alpha = Double.parseDouble( params.get( "alpha" ) ) ;
-		this.numIterations = Integer.parseInt( params.get( "numIterations" ) ) ;
-		this.maxNumCallsPerMinute = Integer.parseInt( params.get( "maxNumCallsPerMinute" ) ) ;
-		this.elevatorsCapacity = Integer.parseInt( params.get( "elevatorsCapacity" ) ) ;
-		this.COST_BY_DISTANCE = Boolean.parseBoolean( params.get( "costByDistance" ) ) ;
-		this.COST_BY_WAITING_TIME = Boolean.parseBoolean( params.get( "costByWaitingTime" ) ) ;
-		this.inputFilename = params.get( "inputFilename" ) ;
-		this.outputFilename = params.get( "outputFilename" ) ;
-		this.building = new Building( Integer.parseInt( params.get( "numElevators" ) ) ,
-										Integer.parseInt( params.get( "numFloors" ) ) , this.elevatorsCapacity ) ;
-		this.generator = new CallGenerator( Integer.parseInt( params.get( "numFloors" ) ) ) ;
+	public Simulation( Parameters params ){
+		this.alpha = params.alpha ;
+		this.numIterations = params.numIterations ;
+		this.maxNumCallsPerMinute = params.maxNumCallsPerMinute ;
+		this.elevatorsCapacity = params.elevatorsCapacity ;
+		this.COST_BY_DISTANCE = params.costByDistance ;
+		this.COST_BY_WAITING_TIME = params.costByWaitingTime ;
+		this.inputFilename = params.inputFilename ;
+		this.outputFilename = params.outputFilename ;
+		this.building = new Building( params.numElevators , params.numFloors , this.elevatorsCapacity ) ;
+		this.generator = new CallGenerator( params.numFloors ) ;
 	}
 	
 	public Simulation( Integer numElevators , Integer numFloors , String callsFile ){
@@ -67,6 +71,7 @@ public class Simulation {
 	}
 	
 	private void simulate( List<List<ElevatorCall>> calls ){
+		Long start = System.currentTimeMillis() ;
 		Building currentState = new Building( this.building ) ;
 		Boolean hasSolution = true ;
 		for( Integer t = 0 ; t < totalTime ; t++){
@@ -76,8 +81,12 @@ public class Simulation {
 				hasSolution = false ;
 				break ;
 			}
+			debug( "TIME = " + t ) ;
+			debug( currentState ) ;
 			currentState.moveElevators() ;
 		}
+		Long end = System.currentTimeMillis() ;
+		this.executionTime = end - start ;
 		saveResult( hasSolution ? currentState : null ) ;
 	}
 	
@@ -97,19 +106,26 @@ public class Simulation {
 				}
 				if( options.isEmpty() ) continue ;
 				Collections.sort( options ) ;
-				Integer newLength = Integer.parseInt( Math.round( options.size() * alpha + 0.5 ) + "" ) ;
-				options = options.subList( 0 ,  newLength ) ;
-				Integer selectedIndex = randomBetween( 0 ,  newLength ) ;
+				options = filterList( options ) ;
+				Integer selectedIndex = randomBetween( 0 ,  options.size() ) ;
 				Building selection = new Building( options.get( selectedIndex ) ) ;
-				if( bestSol == null || selection.isBetterThan( bestSol ) ){
-//					debug( "Mejor solución encontrada, anterior = " + ( bestSol == null ? "NULL" : bestSol.getHeuristicValue() ) + " nuevo = " + selection.getHeuristicValue() ) ;
-					bestSol = new Building( selection ) ;
-				}
+				if( bestSol == null || selection.isBetterThan( bestSol ) ) bestSol = new Building( selection ) ;
 			}
 			currentState = new Building( bestSol ) ;
 		}
-//		for( String inst : currentState.getInstructions() ) debug( inst ) ;
 		return currentState ;
+	}
+	
+	private List<Building> filterList( List<Building> options ){
+		Integer maxi = -1 , mini = Integer.MAX_VALUE ;
+		for( Building b : options ){
+			maxi = Math.max( maxi ,  b.getHeuristicValue() ) ;
+			mini = Math.min( mini ,  b.getHeuristicValue() ) ;
+		}
+		Integer top = ( int )( mini + alpha * ( maxi - mini ) ) ;
+		List<Building> lst = new ArrayList<Building>() ;
+		for( Building b : options ) if( b.getHeuristicValue() <= top ) lst.add( b ) ;
+		return lst ;
 	}
 	
 	public void reset(){
@@ -118,10 +134,22 @@ public class Simulation {
 	}
 	
 	private void saveResult( Building state ){
-		// TODO: implementar guardar el resultado en un archivo
-		debug( outputFilename ) ;
-		if( state != null ) debug( "SOLUCION FINAL:\n" + state ) ;
-		else debug( "NO SOLUTION" ) ;
+		PrintWriter pw = null ; 
+		try{
+			debug( outputFilename ) ;
+			pw = new PrintWriter( new BufferedWriter( new FileWriter( outputFilename , true ) ) ) ;
+			if( state != null ){
+				pw.println( "SOLUCION FINAL:" ) ;
+				pw.println( "Execution Time: " + this.executionTime ) ;
+				pw.print( state ) ;
+			}
+			else pw.println( "NO SOLUTION" ) ;
+			pw.println() ;
+		}catch( Exception e ){
+			
+		}finally{
+			if( pw != null ) pw.close() ;
+		}
 	}
 }
 

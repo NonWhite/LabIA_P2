@@ -7,6 +7,6 @@
   "costByWaitingTime" : true,
   "numElevators" : 50,
   "numFloors" : 50,
-  "inputFilename" : "/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data/expalpha/calls.in",
-  "outputFilename" : "/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data/expalpha/out/data_both_085.out"
+  "inputFilename" : "/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data//expalpha/calls.in",
+  "outputFilename" : "/Users/nonwhite/Dropbox/IME/Laboratorio IA/LabIA_P2/data//expalpha/out/data_both_085.out"
 }

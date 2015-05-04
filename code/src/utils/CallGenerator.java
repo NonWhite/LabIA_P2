@@ -71,6 +71,7 @@ public class CallGenerator {
 			}
 			pw.close() ;
 		}catch( FileNotFoundException e ){
+			e.printStackTrace() ;
 		}
 		return lstCalls ;
 	}

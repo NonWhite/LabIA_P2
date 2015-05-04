@@ -64,47 +64,48 @@ Para fazer os experimentos foi gerado um archivo de entrada com os seguintes par
 
  \subsection{Experimentos com número de iterações}
  	Da mesma forma que em~\ref{subsec:expalpha} temos experimentos com o número de iterações, esta vez os valores de número de iterações variaram de 100 a 1000. Além, o valor de alpha foi o melhor valor resultado dos experimentos~\ref{subsec:expalpha}. A continuação os resultados.
- 	\subsubsection{Para distancia} % FALTA
+ 	%\subsubsection{Para distancia} % FALTA
+	%	\begin{figure}[H]
+	%		\centering
+	%		\includegraphics[height=8cm]{images/cost_distance_iterations}
+	%		\caption{Custos com distancia}
+	%		\label{fig:costdistanceiterations}
+	%	\end{figure}
+	%	
+	%	\begin{figure}[H]
+	%		\centering
+	%		\includegraphics[height=8cm]{images/time_distance_iterations}
+	%		\caption{Tempo com distancia}
+	%		\label{fig:timedistanceiterations}
+	%	\end{figure}
+	
+	%\subsubsection{Para tempo de espera e tempo no elevador} % FALTA
+	%	\begin{figure}[H]
+	%		\centering
+	%		\includegraphics[height=8cm]{images/cost_both_alpha} % CAMBIAR
+	%		\caption{Custos com tempo de espera e tempo no elevador}
+	%		\label{fig:costwaitingiterations}
+	%	\end{figure}
+		
+	%	\begin{figure}[H]
+	%		\centering
+	%		\includegraphics[height=8cm]{images/time_both_alpha} % CAMBIAR
+	%		\caption{Tempo com tempo de espera e tempo no elevador}
+	%		\label{fig:timewaitingiterations}
+	%	\end{figure}
+	
+	\subsubsection{Para ambos critérios}
+		Por último, a figura~\ref{fig:costbothiterations} mostra que o melhor valor para usar com ambos critérios para calculo de custo é número de iterações igual a 500, mas os valores para todos os casos não são muito diferentes. Além, o tempo de execução é consideravelmente maior cada vez que o número de iterações é maior.
 		\begin{figure}[H]
 			\centering
 			\includegraphics[height=8cm]{images/cost_both_iterations}
-			\caption{Custos com distancia}
-			\label{fig:costdistanceiterations}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[height=8cm]{images/time_both_iterations}
-			\caption{Tempo com distancia}
-			\label{fig:timedistanceiterations}
-		\end{figure}
-	
-	\subsubsection{Para tempo de espera e tempo no elevador} % FALTA
-		\begin{figure}[H]
-			\centering
-			\includegraphics[height=8cm]{images/cost_both_alpha} % CAMBIAR
-			\caption{Custos com tempo de espera e tempo no elevador}
-			\label{fig:costwaitingiterations}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[height=8cm]{images/time_both_alpha} % CAMBIAR
-			\caption{Tempo com tempo de espera e tempo no elevador}
-			\label{fig:timewaitingiterations}
-		\end{figure}
-	
-	\subsubsection{Para ambos critérios} % FALTA
-		\begin{figure}[H]
-			\centering
-			\includegraphics[height=8cm]{images/cost_both_alpha} % CAMBIAR
 			\caption{Custos com ambos critérios}
 			\label{fig:costbothiterations}
 		\end{figure}
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[height=8cm]{images/time_both_alpha} % CAMBIAR
+			\includegraphics[height=8cm]{images/time_both_iterations}
 			\caption{Tempo com ambos critérios}
 			\label{fig:timebothiterations}
 		\end{figure}

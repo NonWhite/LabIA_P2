@@ -3018,3 +3018,154 @@ Stops in floors      =              []              [] [(In=10,Out=35,WaitTime=2
 Distance             =               0               0              55
 ##############################################################################
 
+SOLUCION FINAL:
+Execution Time: 23025
+Num elevators = 50
+Num floors = 50
+Cost = 11220
+------------------------------------------------------------------------------
+Elevator ID          =               1               2               3
+Direction            =               1               0              -1
+Current Floor        =               4               1               4
+Total Capacity       =              20              20              20
+Current Capacity     =              19              20              13
+Number of stops      =               6               0              21
+Stops in floors      = [(In=6,Out=23,WaitTime=3), (In=6,Out=23,WaitTime=3), (In=8,Out=21,WaitTime=3), (In=15,Out=30,WaitTime=1), (In=24,Out=24,WaitTime=2), (In=30,Out=46,WaitTime=1)]              [] [(In=2,Out=2,WaitTime=14), (In=18,Out=14,WaitTime=23), (In=18,Out=14,WaitTime=23), (In=19,Out=19,WaitTime=13), (In=19,Out=19,WaitTime=17), (In=20,Out=26,WaitTime=21), (In=22,Out=41,WaitTime=23), (In=25,Out=20,WaitTime=21), (In=26,Out=41,WaitTime=21), (In=27,Out=27,WaitTime=18), (In=27,Out=27,WaitTime=19), (In=28,Out=19,WaitTime=21), (In=30,Out=39,WaitTime=21), (In=32,Out=4,WaitTime=21), (In=35,Out=33,WaitTime=23), (In=39,Out=35,WaitTime=20), (In=41,Out=41,WaitTime=22), (In=44,Out=44,WaitTime=24), (In=47,Out=38,WaitTime=20), (In=49,Out=17,WaitTime=20), (In=49,Out=40,WaitTime=23)]
+Distance             =              37               2             274
+------------------------------------------------------------------------------
+Elevator ID          =               4               5               6
+Direction            =              -1              -1               0
+Current Floor        =              19              18               1
+Total Capacity       =              20              20              20
+Current Capacity     =              15              14              20
+Number of stops      =              28              24               0
+Stops in floors      = [(In=1,Out=1,WaitTime=3), (In=13,Out=13,WaitTime=2), (In=21,Out=31,WaitTime=17), (In=5,Out=5,WaitTime=9), (In=23,Out=7,WaitTime=17), (In=23,Out=2,WaitTime=18), (In=24,Out=11,WaitTime=17), (In=25,Out=29,WaitTime=7), (In=26,Out=42,WaitTime=17), (In=27,Out=27,WaitTime=19), (In=28,Out=2,WaitTime=7), (In=31,Out=44,WaitTime=17), (In=32,Out=32,WaitTime=15), (In=32,Out=25,WaitTime=17), (In=34,Out=48,WaitTime=7), (In=36,Out=10,WaitTime=7), (In=36,Out=9,WaitTime=17), (In=36,Out=23,WaitTime=17), (In=37,Out=32,WaitTime=7), (In=37,Out=24,WaitTime=17), (In=38,Out=5,WaitTime=7), (In=39,Out=3,WaitTime=7), (In=42,Out=48,WaitTime=17), (In=43,Out=18,WaitTime=17), (In=43,Out=5,WaitTime=17), (In=47,Out=23,WaitTime=7), (In=47,Out=36,WaitTime=17), (In=48,Out=47,WaitTime=7)] [(In=8,Out=8,WaitTime=3), (In=8,Out=8,WaitTime=1), (In=20,Out=42,WaitTime=11), (In=20,Out=13,WaitTime=11), (In=23,Out=21,WaitTime=11), (In=32,Out=32,WaitTime=4), (In=33,Out=23,WaitTime=12), (In=35,Out=35,WaitTime=5), (In=36,Out=2,WaitTime=11), (In=37,Out=24,WaitTime=11), (In=38,Out=30,WaitTime=12), (In=38,Out=18,WaitTime=12), (In=39,Out=26,WaitTime=11), (In=39,Out=6,WaitTime=12), (In=40,Out=31,WaitTime=12), (In=43,Out=24,WaitTime=11), (In=43,Out=12,WaitTime=11), (In=43,Out=5,WaitTime=12), (In=43,Out=22,WaitTime=12), (In=44,Out=44,WaitTime=5), (In=46,Out=10,WaitTime=11), (In=46,Out=2,WaitTime=12), (In=47,Out=11,WaitTime=11), (In=3,Out=3,WaitTime=10)]              []
+Distance             =             444             383               0
+------------------------------------------------------------------------------
+Elevator ID          =               7               8               9
+Direction            =               0               1               1
+Current Floor        =               1              14              11
+Total Capacity       =              20              20              20
+Current Capacity     =              20              14              20
+Number of stops      =               0              30              15
+Stops in floors      =              [] [(In=15,Out=5,WaitTime=8), (In=16,Out=2,WaitTime=9), (In=17,Out=17,WaitTime=5), (In=17,Out=30,WaitTime=9), (In=19,Out=3,WaitTime=9), (In=20,Out=4,WaitTime=9), (In=21,Out=21,WaitTime=10), (In=23,Out=40,WaitTime=8), (In=23,Out=25,WaitTime=9), (In=24,Out=11,WaitTime=8), (In=26,Out=17,WaitTime=8), (In=29,Out=15,WaitTime=8), (In=30,Out=23,WaitTime=8), (In=30,Out=23,WaitTime=9), (In=32,Out=33,WaitTime=9), (In=32,Out=32,WaitTime=10), (In=33,Out=27,WaitTime=8), (In=34,Out=37,WaitTime=8), (In=35,Out=18,WaitTime=9), (In=36,Out=8,WaitTime=9), (In=37,Out=21,WaitTime=9), (In=38,Out=21,WaitTime=8), (In=38,Out=28,WaitTime=8), (In=39,Out=21,WaitTime=9), (In=40,Out=40,WaitTime=3), (In=41,Out=41,WaitTime=8), (In=46,Out=4,WaitTime=8), (In=48,Out=21,WaitTime=8), (In=48,Out=48,WaitTime=9), (In=48,Out=13,WaitTime=9)] [(In=12,Out=21,WaitTime=4), (In=15,Out=23,WaitTime=3), (In=17,Out=46,WaitTime=7), (In=19,Out=38,WaitTime=1), (In=19,Out=47,WaitTime=3), (In=25,Out=28,WaitTime=3), (In=26,Out=18,WaitTime=2), (In=26,Out=43,WaitTime=3), (In=28,Out=6,WaitTime=3), (In=29,Out=14,WaitTime=2), (In=36,Out=9,WaitTime=2), (In=42,Out=16,WaitTime=2), (In=42,Out=8,WaitTime=2), (In=44,Out=28,WaitTime=1), (In=44,Out=13,WaitTime=2)]
+Distance             =               0             224              79
+------------------------------------------------------------------------------
+Elevator ID          =              10              11              12
+Direction            =               0              -1               1
+Current Floor        =               1              22              21
+Total Capacity       =              20              20              20
+Current Capacity     =              20              11              13
+Number of stops      =               0              20              29
+Stops in floors      =              [] [(In=10,Out=10,WaitTime=38), (In=25,Out=11,WaitTime=48), (In=2,Out=2,WaitTime=41), (In=29,Out=27,WaitTime=44), (In=29,Out=11,WaitTime=48), (In=30,Out=30,WaitTime=48), (In=31,Out=49,WaitTime=48), (In=32,Out=32,WaitTime=44), (In=32,Out=18,WaitTime=44), (In=35,Out=33,WaitTime=48), (In=37,Out=29,WaitTime=44), (In=37,Out=37,WaitTime=46), (In=39,Out=39,WaitTime=42), (In=40,Out=43,WaitTime=48), (In=41,Out=11,WaitTime=48), (In=44,Out=44,WaitTime=45), (In=45,Out=13,WaitTime=44), (In=45,Out=24,WaitTime=44), (In=47,Out=47,WaitTime=3), (In=48,Out=48,WaitTime=37)] [(In=22,Out=22,WaitTime=21), (In=23,Out=23,WaitTime=1), (In=23,Out=47,WaitTime=30), (In=23,Out=14,WaitTime=32), (In=24,Out=1,WaitTime=31), (In=25,Out=30,WaitTime=30), (In=26,Out=26,WaitTime=3), (In=26,Out=26,WaitTime=25), (In=26,Out=12,WaitTime=31), (In=27,Out=47,WaitTime=31), (In=28,Out=2,WaitTime=30), (In=28,Out=36,WaitTime=31), (In=28,Out=27,WaitTime=32), (In=29,Out=42,WaitTime=31), (In=31,Out=13,WaitTime=30), (In=32,Out=24,WaitTime=30), (In=34,Out=16,WaitTime=30), (In=34,Out=12,WaitTime=30), (In=36,Out=46,WaitTime=31), (In=37,Out=25,WaitTime=30), (In=38,Out=25,WaitTime=31), (In=41,Out=41,WaitTime=3), (In=41,Out=44,WaitTime=31), (In=42,Out=40,WaitTime=30), (In=43,Out=41,WaitTime=30), (In=46,Out=46,WaitTime=19), (In=46,Out=28,WaitTime=31), (In=47,Out=47,WaitTime=23), (In=47,Out=33,WaitTime=30)]
+Distance             =               0            1113             979
+------------------------------------------------------------------------------
+Elevator ID          =              13              14              15
+Direction            =               1               0               1
+Current Floor        =               9               1              14
+Total Capacity       =              20              20              20
+Current Capacity     =              18              20              12
+Number of stops      =              11               0              18
+Stops in floors      = [(In=13,Out=30,WaitTime=6), (In=13,Out=12,WaitTime=6), (In=15,Out=35,WaitTime=6), (In=16,Out=1,WaitTime=6), (In=17,Out=7,WaitTime=6), (In=20,Out=3,WaitTime=6), (In=21,Out=18,WaitTime=6), (In=27,Out=17,WaitTime=6), (In=37,Out=37,WaitTime=7), (In=38,Out=38,WaitTime=1), (In=49,Out=31,WaitTime=6)]              [] [(In=21,Out=30,WaitTime=42), (In=21,Out=49,WaitTime=42), (In=22,Out=22,WaitTime=41), (In=23,Out=4,WaitTime=42), (In=23,Out=1,WaitTime=42), (In=25,Out=25,WaitTime=37), (In=25,Out=36,WaitTime=42), (In=26,Out=26,WaitTime=15), (In=26,Out=26,WaitTime=18), (In=31,Out=31,WaitTime=44), (In=33,Out=38,WaitTime=42), (In=34,Out=38,WaitTime=42), (In=37,Out=37,WaitTime=16), (In=37,Out=46,WaitTime=42), (In=45,Out=45,WaitTime=19), (In=45,Out=33,WaitTime=43), (In=47,Out=20,WaitTime=43), (In=48,Out=48,WaitTime=34)]
+Distance             =             105               0             763
+------------------------------------------------------------------------------
+Elevator ID          =              16              17              18
+Direction            =               0               0               0
+Current Floor        =               1               1               1
+Total Capacity       =              20              20              20
+Current Capacity     =              20              20              20
+Number of stops      =               0               0               0
+Stops in floors      =              []              []              []
+Distance             =               0               0               2
+------------------------------------------------------------------------------
+Elevator ID          =              19              20              21
+Direction            =               0               0               0
+Current Floor        =               1               1               1
+Total Capacity       =              20              20              20
+Current Capacity     =              20              20              20
+Number of stops      =               0               0               0
+Stops in floors      =              []              []              []
+Distance             =               0               0               0
+------------------------------------------------------------------------------
+Elevator ID          =              22              23              24
+Direction            =               0               0               1
+Current Floor        =               1               1               7
+Total Capacity       =              20              20              20
+Current Capacity     =              20              20              13
+Number of stops      =               0               0              18
+Stops in floors      =              []              [] [(In=14,Out=17,WaitTime=21), (In=14,Out=31,WaitTime=21), (In=18,Out=20,WaitTime=21), (In=20,Out=20,WaitTime=18), (In=22,Out=22,WaitTime=13), (In=24,Out=24,WaitTime=14), (In=27,Out=13,WaitTime=22), (In=28,Out=28,WaitTime=16), (In=34,Out=33,WaitTime=22), (In=35,Out=5,WaitTime=21), (In=35,Out=35,WaitTime=23), (In=37,Out=9,WaitTime=22), (In=40,Out=40,WaitTime=11), (In=40,Out=9,WaitTime=21), (In=42,Out=42,WaitTime=20), (In=42,Out=7,WaitTime=22), (In=46,Out=32,WaitTime=21), (In=47,Out=27,WaitTime=22)]
+Distance             =               0               0             264
+------------------------------------------------------------------------------
+Elevator ID          =              25              26              27
+Direction            =               1               0               0
+Current Floor        =              20               1               1
+Total Capacity       =              20              20              20
+Current Capacity     =              13              20              20
+Number of stops      =              22               0               0
+Stops in floors      = [(In=21,Out=21,WaitTime=7), (In=21,Out=21,WaitTime=11), (In=23,Out=3,WaitTime=18), (In=24,Out=19,WaitTime=18), (In=24,Out=38,WaitTime=19), (In=26,Out=14,WaitTime=19), (In=26,Out=26,WaitTime=20), (In=27,Out=15,WaitTime=19), (In=30,Out=6,WaitTime=18), (In=31,Out=31,WaitTime=17), (In=31,Out=20,WaitTime=19), (In=33,Out=33,WaitTime=7), (In=34,Out=43,WaitTime=18), (In=38,Out=18,WaitTime=19), (In=41,Out=2,WaitTime=19), (In=42,Out=34,WaitTime=18), (In=42,Out=1,WaitTime=19), (In=45,Out=13,WaitTime=18), (In=47,Out=12,WaitTime=18), (In=48,Out=48,WaitTime=1), (In=49,Out=49,WaitTime=18), (In=49,Out=1,WaitTime=19)]              []              []
+Distance             =             435               0               0
+------------------------------------------------------------------------------
+Elevator ID          =              28              29              30
+Direction            =               0               0               0
+Current Floor        =               1               1               1
+Total Capacity       =              20              20              20
+Current Capacity     =              20              20              20
+Number of stops      =               0               0               0
+Stops in floors      =              []              []              []
+Distance             =               0               0               0
+------------------------------------------------------------------------------
+Elevator ID          =              31              32              33
+Direction            =               0               0              -1
+Current Floor        =               1               1              16
+Total Capacity       =              20              20              20
+Current Capacity     =              20              20              11
+Number of stops      =               0               0              23
+Stops in floors      =              []              [] [(In=10,Out=10,WaitTime=2), (In=18,Out=18,WaitTime=14), (In=6,Out=6,WaitTime=2), (In=19,Out=19,WaitTime=10), (In=19,Out=15,WaitTime=14), (In=19,Out=3,WaitTime=14), (In=21,Out=21,WaitTime=3), (In=21,Out=2,WaitTime=14), (In=22,Out=22,WaitTime=16), (In=27,Out=27,WaitTime=1), (In=27,Out=27,WaitTime=14), (In=27,Out=24,WaitTime=14), (In=31,Out=36,WaitTime=14), (In=32,Out=38,WaitTime=14), (In=32,Out=5,WaitTime=14), (In=33,Out=20,WaitTime=14), (In=33,Out=12,WaitTime=14), (In=34,Out=24,WaitTime=14), (In=36,Out=23,WaitTime=14), (In=38,Out=2,WaitTime=14), (In=39,Out=39,WaitTime=14), (In=47,Out=34,WaitTime=14), (In=48,Out=31,WaitTime=14)]
+Distance             =               0               0             397
+------------------------------------------------------------------------------
+Elevator ID          =              34              35              36
+Direction            =               1               0               1
+Current Floor        =              14               1              15
+Total Capacity       =              20              20              20
+Current Capacity     =              14              20              14
+Number of stops      =              21               0              11
+Stops in floors      = [(In=20,Out=20,WaitTime=38), (In=20,Out=4,WaitTime=46), (In=21,Out=8,WaitTime=46), (In=24,Out=24,WaitTime=48), (In=28,Out=27,WaitTime=46), (In=28,Out=12,WaitTime=47), (In=28,Out=10,WaitTime=47), (In=29,Out=39,WaitTime=47), (In=30,Out=16,WaitTime=46), (In=31,Out=31,WaitTime=34), (In=31,Out=22,WaitTime=47), (In=31,Out=48,WaitTime=47), (In=34,Out=35,WaitTime=46), (In=36,Out=33,WaitTime=46), (In=42,Out=42,WaitTime=42), (In=43,Out=43,WaitTime=39), (In=43,Out=30,WaitTime=46), (In=44,Out=44,WaitTime=41), (In=45,Out=3,WaitTime=47), (In=47,Out=31,WaitTime=47), (In=48,Out=9,WaitTime=47)]              [] [(In=19,Out=20,WaitTime=28), (In=26,Out=26,WaitTime=23), (In=30,Out=20,WaitTime=28), (In=8,Out=8,WaitTime=3), (In=34,Out=34,WaitTime=22), (In=34,Out=34,WaitTime=26), (In=39,Out=44,WaitTime=28), (In=41,Out=41,WaitTime=29), (In=46,Out=46,WaitTime=3), (In=46,Out=19,WaitTime=28), (In=48,Out=24,WaitTime=28)]
+Distance             =             435               0             394
+------------------------------------------------------------------------------
+Elevator ID          =              37              38              39
+Direction            =               1               1               1
+Current Floor        =               7              15               7
+Total Capacity       =              20              20              20
+Current Capacity     =              15               7              14
+Number of stops      =              19              42              23
+Stops in floors      = [(In=13,Out=13,WaitTime=29), (In=13,Out=11,WaitTime=29), (In=20,Out=41,WaitTime=24), (In=20,Out=7,WaitTime=24), (In=23,Out=23,WaitTime=27), (In=27,Out=32,WaitTime=29), (In=28,Out=10,WaitTime=25), (In=28,Out=38,WaitTime=29), (In=29,Out=5,WaitTime=24), (In=30,Out=7,WaitTime=24), (In=34,Out=34,WaitTime=27), (In=37,Out=23,WaitTime=24), (In=38,Out=31,WaitTime=24), (In=39,Out=39,WaitTime=26), (In=43,Out=43,WaitTime=8), (In=46,Out=43,WaitTime=24), (In=46,Out=35,WaitTime=25), (In=46,Out=47,WaitTime=29), (In=49,Out=23,WaitTime=29)] [(In=21,Out=21,WaitTime=26), (In=21,Out=21,WaitTime=33), (In=21,Out=31,WaitTime=34), (In=21,Out=31,WaitTime=35), (In=21,Out=47,WaitTime=35), (In=23,Out=23,WaitTime=21), (In=23,Out=21,WaitTime=35), (In=24,Out=14,WaitTime=36), (In=25,Out=25,WaitTime=22), (In=25,Out=41,WaitTime=35), (In=27,Out=27,WaitTime=34), (In=27,Out=36,WaitTime=36), (In=28,Out=23,WaitTime=35), (In=28,Out=42,WaitTime=36), (In=29,Out=10,WaitTime=35), (In=29,Out=47,WaitTime=36), (In=29,Out=24,WaitTime=36), (In=30,Out=30,WaitTime=24), (In=30,Out=30,WaitTime=26), (In=30,Out=2,WaitTime=35), (In=31,Out=9,WaitTime=36), (In=32,Out=7,WaitTime=34), (In=33,Out=1,WaitTime=34), (In=36,Out=19,WaitTime=34), (In=37,Out=25,WaitTime=35), (In=39,Out=39,WaitTime=30), (In=40,Out=4,WaitTime=34), (In=40,Out=43,WaitTime=35), (In=40,Out=40,WaitTime=37), (In=41,Out=41,WaitTime=27), (In=41,Out=35,WaitTime=36), (In=42,Out=48,WaitTime=36), (In=43,Out=17,WaitTime=34), (In=43,Out=33,WaitTime=35), (In=43,Out=7,WaitTime=35), (In=46,Out=46,WaitTime=34), (In=46,Out=13,WaitTime=36), (In=46,Out=39,WaitTime=36), (In=48,Out=2,WaitTime=34), (In=48,Out=32,WaitTime=34), (In=49,Out=49,WaitTime=20), (In=49,Out=49,WaitTime=28)] [(In=15,Out=32,WaitTime=26), (In=15,Out=2,WaitTime=26), (In=15,Out=20,WaitTime=27), (In=18,Out=35,WaitTime=26), (In=18,Out=37,WaitTime=27), (In=18,Out=35,WaitTime=27), (In=20,Out=18,WaitTime=26), (In=21,Out=28,WaitTime=26), (In=22,Out=23,WaitTime=26), (In=25,Out=25,WaitTime=17), (In=27,Out=27,WaitTime=22), (In=28,Out=28,WaitTime=22), (In=28,Out=29,WaitTime=27), (In=29,Out=41,WaitTime=26), (In=32,Out=24,WaitTime=26), (In=36,Out=24,WaitTime=27), (In=39,Out=39,WaitTime=21), (In=40,Out=40,WaitTime=28), (In=41,Out=2,WaitTime=26), (In=44,Out=46,WaitTime=27), (In=46,Out=17,WaitTime=26), (In=47,Out=47,WaitTime=14), (In=47,Out=29,WaitTime=26)]
+Distance             =             464             750             366
+------------------------------------------------------------------------------
+Elevator ID          =              40              41              42
+Direction            =               1               1               1
+Current Floor        =               9               6               5
+Total Capacity       =              20              20              20
+Current Capacity     =              15              17              16
+Number of stops      =              20              26              20
+Stops in floors      = [(In=12,Out=48,WaitTime=10), (In=5,Out=5,WaitTime=3), (In=14,Out=37,WaitTime=11), (In=7,Out=7,WaitTime=4), (In=15,Out=46,WaitTime=10), (In=15,Out=15,WaitTime=12), (In=17,Out=6,WaitTime=3), (In=17,Out=47,WaitTime=3), (In=22,Out=30,WaitTime=10), (In=27,Out=27,WaitTime=6), (In=29,Out=21,WaitTime=10), (In=29,Out=5,WaitTime=10), (In=31,Out=6,WaitTime=10), (In=33,Out=23,WaitTime=10), (In=38,Out=6,WaitTime=10), (In=38,Out=38,WaitTime=11), (In=43,Out=48,WaitTime=10), (In=46,Out=4,WaitTime=3), (In=47,Out=28,WaitTime=3), (In=47,Out=1,WaitTime=10)] [(In=10,Out=13,WaitTime=5), (In=11,Out=39,WaitTime=5), (In=17,Out=48,WaitTime=5), (In=19,Out=10,WaitTime=4), (In=19,Out=1,WaitTime=5), (In=23,Out=42,WaitTime=5), (In=26,Out=31,WaitTime=4), (In=27,Out=27,WaitTime=6), (In=28,Out=28,WaitTime=2), (In=30,Out=1,WaitTime=4), (In=33,Out=18,WaitTime=5), (In=36,Out=7,WaitTime=5), (In=36,Out=45,WaitTime=5), (In=36,Out=35,WaitTime=5), (In=38,Out=19,WaitTime=5), (In=38,Out=21,WaitTime=5), (In=39,Out=30,WaitTime=5), (In=40,Out=27,WaitTime=4), (In=40,Out=12,WaitTime=5), (In=41,Out=33,WaitTime=5), (In=42,Out=49,WaitTime=4), (In=42,Out=41,WaitTime=4), (In=43,Out=27,WaitTime=4), (In=45,Out=45,WaitTime=2), (In=45,Out=8,WaitTime=5), (In=46,Out=7,WaitTime=4)] [(In=16,Out=23,WaitTime=39), (In=16,Out=44,WaitTime=40), (In=17,Out=17,WaitTime=42), (In=18,Out=6,WaitTime=40), (In=18,Out=7,WaitTime=40), (In=22,Out=31,WaitTime=40), (In=26,Out=46,WaitTime=41), (In=27,Out=12,WaitTime=39), (In=30,Out=30,WaitTime=18), (In=32,Out=31,WaitTime=39), (In=34,Out=17,WaitTime=41), (In=36,Out=36,WaitTime=37), (In=36,Out=36,WaitTime=38), (In=37,Out=22,WaitTime=40), (In=39,Out=34,WaitTime=40), (In=41,Out=6,WaitTime=40), (In=42,Out=14,WaitTime=40), (In=44,Out=45,WaitTime=40), (In=47,Out=49,WaitTime=39), (In=47,Out=12,WaitTime=40)]
+Distance             =             196             115             577
+------------------------------------------------------------------------------
+Elevator ID          =              43              44              45
+Direction            =              -1              -1               1
+Current Floor        =              10              29               8
+Total Capacity       =              20              20              20
+Current Capacity     =              14              12              17
+Number of stops      =              17              25              20
+Stops in floors      = [(In=6,Out=6,WaitTime=25), (In=20,Out=20,WaitTime=17), (In=28,Out=17,WaitTime=37), (In=28,Out=49,WaitTime=38), (In=29,Out=26,WaitTime=37), (In=30,Out=23,WaitTime=38), (In=31,Out=31,WaitTime=26), (In=31,Out=14,WaitTime=38), (In=32,Out=32,WaitTime=24), (In=33,Out=33,WaitTime=22), (In=34,Out=40,WaitTime=38), (In=36,Out=25,WaitTime=37), (In=36,Out=36,WaitTime=38), (In=39,Out=23,WaitTime=38), (In=40,Out=3,WaitTime=38), (In=41,Out=22,WaitTime=37), (In=45,Out=1,WaitTime=38)] [(In=2,Out=2,WaitTime=17), (In=4,Out=4,WaitTime=3), (In=32,Out=32,WaitTime=28), (In=32,Out=40,WaitTime=50), (In=33,Out=2,WaitTime=49), (In=33,Out=14,WaitTime=50), (In=33,Out=44,WaitTime=50), (In=35,Out=43,WaitTime=50), (In=37,Out=41,WaitTime=49), (In=38,Out=20,WaitTime=49), (In=38,Out=6,WaitTime=50), (In=39,Out=9,WaitTime=49), (In=39,Out=10,WaitTime=49), (In=41,Out=41,WaitTime=17), (In=41,Out=1,WaitTime=50), (In=43,Out=38,WaitTime=49), (In=44,Out=44,WaitTime=33), (In=44,Out=10,WaitTime=49), (In=45,Out=45,WaitTime=48), (In=45,Out=44,WaitTime=49), (In=46,Out=3,WaitTime=49), (In=48,Out=17,WaitTime=50), (In=48,Out=30,WaitTime=50), (In=49,Out=49,WaitTime=37), (In=49,Out=49,WaitTime=47)] [(In=14,Out=1,WaitTime=15), (In=14,Out=7,WaitTime=16), (In=19,Out=5,WaitTime=16), (In=19,Out=19,WaitTime=17), (In=20,Out=14,WaitTime=16), (In=26,Out=1,WaitTime=15), (In=28,Out=4,WaitTime=15), (In=28,Out=37,WaitTime=16), (In=30,Out=15,WaitTime=16), (In=32,Out=32,WaitTime=9), (In=41,Out=7,WaitTime=15), (In=42,Out=19,WaitTime=15), (In=42,Out=48,WaitTime=16), (In=43,Out=4,WaitTime=15), (In=45,Out=46,WaitTime=13), (In=45,Out=38,WaitTime=16), (In=46,Out=36,WaitTime=13), (In=46,Out=4,WaitTime=15), (In=46,Out=43,WaitTime=16), (In=48,Out=48,WaitTime=14)]
+Distance             =             490            1470             189
+------------------------------------------------------------------------------
+Elevator ID          =              46              47              48
+Direction            =               1               0               0
+Current Floor        =              22               1               6
+Total Capacity       =              20              20              20
+Current Capacity     =              17              20              20
+Number of stops      =              19               0               0
+Stops in floors      = [(In=27,Out=43,WaitTime=45), (In=8,Out=8,WaitTime=28), (In=28,Out=7,WaitTime=45), (In=7,Out=7,WaitTime=34), (In=29,Out=32,WaitTime=45), (In=29,Out=38,WaitTime=45), (In=30,Out=23,WaitTime=33), (In=31,Out=12,WaitTime=45), (In=34,Out=15,WaitTime=45), (In=38,Out=38,WaitTime=46), (In=39,Out=2,WaitTime=33), (In=39,Out=41,WaitTime=45), (In=41,Out=30,WaitTime=45), (In=43,Out=21,WaitTime=45), (In=45,Out=26,WaitTime=45), (In=46,Out=13,WaitTime=45), (In=46,Out=34,WaitTime=45), (In=47,Out=43,WaitTime=45), (In=48,Out=36,WaitTime=45)]              []              []
+Distance             =             575               0              14
+##############################################################################
+

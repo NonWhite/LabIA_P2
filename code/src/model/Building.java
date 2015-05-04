@@ -93,7 +93,7 @@ public class Building implements Comparable<Building> {
 		s += "Num elevators = " + this.numElevators + "\n" ;
 		s += "Num floors = " + this.numFloors + "\n" ;
 		s += "Cost = " + this.heuristicValue + "\n" ;
-		for( Integer i = 0 ; i < this.numElevators ; i += 3 ){
+		for( Integer i = 0 ; i + 2 < this.numElevators ; i += 3 ){
 			s += "------------------------------------------------------------------------------\n" ;
 			Elevator e1 = this.elevators.get( i + 0 ) ;
 			Elevator e2 = this.elevators.get( i + 1) ;
@@ -110,6 +110,7 @@ public class Building implements Comparable<Building> {
 			s += t ;
 		}
 		s = s.replaceAll( INF + "" , "         0" ) ;
+	
 		s += "##############################################################################\n" ;
 		return s ;
 	}

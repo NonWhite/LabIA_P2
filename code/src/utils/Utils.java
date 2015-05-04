@@ -1,9 +1,15 @@
 package utils;
 
 import java.io.File;
-import java.io.PrintWriter;
-import java.util.HashMap;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Random;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
+import experiment.Parameters;
 
 public class Utils {
 	public static Integer INF = Integer.MAX_VALUE ;
@@ -17,18 +23,24 @@ public class Utils {
 		System.out.println( obj ) ;
 	}
 	
-	public static HashMap<String,String> parseJSON( String jsonFilename ){
-		HashMap<String,String> dict = new HashMap<String,String>() ;
-		// TODO: Parse json file
-		return dict ;
+	public static Parameters parseJsonParameters( String jsonFilename ){
+		ObjectMapper mapper = new ObjectMapper() ;
+		Parameters params = null ;
+		try{
+			params = mapper.readValue( new File( jsonFilename ) , Parameters.class );
+		}catch( IOException e ){
+			e.printStackTrace() ;
+		} 
+		return params ;
 	}
 	
-	public static void saveToFile( String filename , String text ){
-		try{
-			PrintWriter pw = new PrintWriter( new File( filename ) ) ;
-			pw.println( text ) ;
-			pw.close() ;
-		}catch( Exception e ){
+	public static void saveParams( String filename , Parameters params ){
+		ObjectMapper mapper = new ObjectMapper() ;
+		mapper.configure( SerializationFeature.INDENT_OUTPUT , true ) ;
+		try {
+			mapper.writeValue( new File( filename ) , params ) ;
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -36,5 +48,15 @@ public class Utils {
 		String s = num + "" ;
 		while( s.length() < length ) s = "0" + s ;
 		return s ;
+	}
+	
+	public static void copyFileTo( String inFilePath , String outFilePath ){
+		try{
+			File inFile = new File( inFilePath ) ;
+			File outFile = new File( outFilePath ) ;
+			Files.copy( inFile.toPath() ,  outFile.toPath() , StandardCopyOption.REPLACE_EXISTING ) ;
+		}catch( Exception e ){
+			e.printStackTrace();
+		}
 	}
 }
