@@ -1,6 +1,6 @@
 {
   "alpha" : 0.2,
-  "numIterations" : 1000,
+  "numIterations" : 100,
   "maxNumCallsPerMinute" : 20,
   "elevatorsCapacity" : 20,
   "costByDistance" : false,

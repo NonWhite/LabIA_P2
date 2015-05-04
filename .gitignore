@@ -2,6 +2,13 @@
 
 code/bin/
 
+doc/*.aux
+doc/*.lof
+doc/*.log
+doc/*.lot
+doc/*.synctex.gz
+doc/*.toc
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
